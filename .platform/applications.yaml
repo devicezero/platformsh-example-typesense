@@ -1,0 +1,28 @@
+-   name: typesense
+    type: golang:1.14
+    source:
+      root: app
+    hooks:
+      build: |
+        wget https://dl.typesense.org/releases/0.21.0/typesense-server-0.21.0-linux-amd64.tar.gz
+        tar -xvf typesense-server-0.21.0-linux-amd64.tar.gz
+        mv typesense-server-0.21.0-linux-amd64/typesense-server typesense-server
+        # rm -rf typesense-server-0.21.0-linux-amd64 typesense-server-0.21.0-linux-amd64.tar.gz
+    web:
+      commands:
+        start: ./app/typesense-server --data-dir /app/data --api-port $PORT --api-key 'changemeplz123'
+    mounts:
+      'data':
+        source: local
+        source_path: data
+-   name: app
+    type: "php:7.4"
+    source:
+      root: app
+    relationships:
+      typesense: "typesense:http"
+    web:
+      locations:
+          "/":
+            root: "web"
+            passthru: "/index.html"
