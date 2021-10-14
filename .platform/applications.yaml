@@ -9,7 +9,7 @@
         rm typesense-server-0.21.0-linux-amd64.tar.gz
     web:
       commands:
-        start: ./app/typesense-server --data-dir /app/data --api-port $PORT --api-key 'changemeplz123'
+        start: /app/typesense-server --data-dir /app/data --api-port $PORT --api-key 'changemeplz123'
     mounts:
       'data':
         source: local
