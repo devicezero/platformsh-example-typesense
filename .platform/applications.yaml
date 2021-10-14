@@ -15,8 +15,10 @@
       'data':
         source: local
         source_path: data
+    disk: 1024
 -   name: app
     type: "php:7.4"
+    disk: 128
     source:
       root: app
     relationships:
