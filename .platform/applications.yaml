@@ -6,11 +6,11 @@
       build: |
         wget https://dl.typesense.org/releases/0.21.0/typesense-server-0.21.0-linux-amd64.tar.gz
         tar -xvf typesense-server-0.21.0-linux-amd64.tar.gz
-        mv typesense-server-0.21.0-linux-amd64/typesense-server typesense-server
+        # mv typesense-server-0.21.0-linux-amd64/typesense-server typesense-server
         # rm -rf typesense-server-0.21.0-linux-amd64 typesense-server-0.21.0-linux-amd64.tar.gz
     web:
       commands:
-        start: ./app/typesense-server --data-dir /app/data --api-port $PORT --api-key 'changemeplz123'
+        start: ./app/typesense-server-0.21.0-linux-amd64/typesense-server --data-dir /app/data --api-port $PORT --api-key 'changemeplz123'
     mounts:
       'data':
         source: local
